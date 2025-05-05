@@ -9,7 +9,7 @@ import SearchFilter from '../../../components/SearchFilter'
 import Table from '../../../components/Table'
 import TableButton from '../../../components/TableButton'
 import UsersListPagination from '../../../components/TablePagination'
-import { GetProduct } from '../../../Functions/FGGroup'
+import { GetProduct, UpdateProduct } from '../../../Functions/FGGroup'
 
 const MedicalProductList: React.FC = () => {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -52,7 +52,7 @@ const MedicalProductList: React.FC = () => {
 		setPagination({ ...pagination, itemsPerPage: value })
 	}
 
-	const isFirstRender = useRef(true);
+	const isFirstRender = useRef(true)
 
 	useEffect(() => {
 		if (isFirstRender.current) {
@@ -85,9 +85,10 @@ const MedicalProductList: React.FC = () => {
 
 	const sortableFields = [
 		{ title: 'Product ID', field: '_id' },
-		{ title: 'Product Name', field: 'name' },
 		{ title: 'Image', field: 'display_image' },
-		{ title: 'Price', field: 'price' },
+		{ title: 'Product Name', field: 'name' },
+		{ title: 'Description', field: 'description' },
+		{ title: 'Unit', field: 'unit' },
 	]
 
 	const handleRowClick = (id: string) => {
@@ -106,6 +107,22 @@ const MedicalProductList: React.FC = () => {
 				console.error('Failed to copy ID: ', err)
 				toast.success('Failed to copy ID!')
 			})
+	}
+
+	const handleRemoveProduct = async (product_id: string) => {
+		try {
+			const payload: any = {
+				id: product_id,
+				status: false,
+			}
+			await UpdateProduct(payload)
+			fetchData()
+
+			toast.success('Product Remove Successfully')
+		} catch (error: any) {
+			toast.error(error.message)
+			console.error(error)
+		}
 	}
 
 	const handleKeyPress = (event: React.KeyboardEvent<HTMLSpanElement>, id: string) => {
@@ -134,7 +151,7 @@ const MedicalProductList: React.FC = () => {
 					<div className='card-toolbar'>
 						<TableButton
 							action='add'
-							to='/nutrition/nutrition-product-add'
+							to='/fgiit/product-add'
 							text='Add Product'
 						/>
 					</div>
@@ -179,11 +196,6 @@ const MedicalProductList: React.FC = () => {
 										</td>
 										<td>
 											<span className='text-dark fw-bold  d-block mb-1 fs-6'>
-												{product.name}
-											</span>
-										</td>
-										<td>
-											<span className='text-dark fw-bold  d-block mb-1 fs-6'>
 												<img
 													src={`https://files.fggroup.in/` + product.display_image}
 													alt={product.name}
@@ -192,22 +204,27 @@ const MedicalProductList: React.FC = () => {
 											</span>
 										</td>
 										<td>
+											<span className='text-dark fw-bold  d-block mb-1 fs-6'>{product.name}</span>
+										</td>
+										<td>
 											<span className='text-dark fw-bold  d-block mb-1 fs-6'>
-												₹ {product.price}
+												{product.description}
+											</span>
+										</td>
+										<td>
+											<span className='text-dark fw-bold  d-block mb-1 fs-6'>
+												{product.unit}
 											</span>
 										</td>
 										<td>
 											<div className='d-flex'>
 												<TableButton
-													action='view'
-													to={
-														'/nutrition/nutrition-product/variation-list?product_id=' +
-														product._id
-													}
+													action='edit'
+													to={'/fgiit/product-edit?product_id=' + product._id}
 												/>
 												<TableButton
-													action='edit'
-													to={'/nutrition/nutrition-product-edit?product_id=' + product._id}
+													action='remove'
+													onClick={() => handleRemoveProduct(product._id)}
 												/>
 											</div>
 										</td>

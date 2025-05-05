@@ -145,15 +145,15 @@ const FgiitPrivateRoutes = () => {
 					element={<FgiitAbandonedList />}
 				/>
 				<Route
-					path='/nutrition-product'
+					path='/product'
 					element={<MedicalProductList />}
 				/>
 				<Route
-					path='/nutrition-product-add'
+					path='/product-add'
 					element={<AddMedicalProduct />}
 				/>
 				<Route
-					path='nutrition-product-edit'
+					path='product-edit'
 					element={<EditMedicalProduct />}
 				/>
 

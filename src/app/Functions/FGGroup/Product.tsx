@@ -26,56 +26,6 @@ export function GetProduct(
 	return APIGet(FGGroupEndpoints.GetProduct, getAPIHeaders('fg_group'), query)
 }
 
-export function SetProductTrackingStatus(body: {
-	user_product_id: string
-	status: boolean
-	shipment_status: ShipmentStatusValue
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(
-		FGGroupEndpoints.SetProductTrackingStatus,
-		getAPIHeaders('fg_group'),
-		undefined,
-		body
-	)
-}
-
-/**
- *
- * @deprecated
- * @see GetProductFeedback
- */
-export function GetProductReviews(
-	query?: FGGroupPaginationOptions & FGGroupSortOptions
-): Promise<FGGroupAPIResponse> {
-	console.warn('[DEPRECATED] Use GetProductFeedback() instead of GetProductReviews()')
-	return APIGet(FGGroupEndpoints.GetProductReviews, getAPIHeaders('fg_group'), query)
-}
-
-/**
- * @deprecated The method should not be used
- * @see UpdateProductFeedback
- */
-export function UpdateProductReview(body: {
-	id: string
-	status: boolean
-}): Promise<FGGroupAPIResponse> {
-	console.warn('[DEPRECATED] Use UpdateProductFeedback() instead of UpdateProductReview()')
-	return APIPost(FGGroupEndpoints.UpdateProductReview, getAPIHeaders('fg_group'), undefined, body)
-}
-
-export function GetProductFeedback(
-	query?: { feedback_id?: string } & FGGroupPaginationOptions & FGGroupSortOptions
-): Promise<FGGroupAPIResponse> {
-	return APIGet(FGGroupEndpoints.GetProductFeedback, getAPIHeaders('fg_group'), query)
-}
-
-export function UpdateProductFeedback(body: {
-	feedback_id: string
-	status: FeedbackStatusValue
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(FGGroupEndpoints.GetProductFeedback, getAPIHeaders('fg_group'), undefined, body)
-}
-
 /**
  *
  * @deprecated The method must not be used
@@ -83,29 +33,4 @@ export function UpdateProductFeedback(body: {
 export function GetProductCart(): Promise<FGGroupAPIResponse> {
 	console.error('[DEPRECATED] Use GetOrderCart() instead of GetProductCart()')
 	return APIGet(FGGroupEndpoints.GetProductCart, getAPIHeaders('fg_group'))
-}
-
-export function GetProductStock(
-	query?: { id?: string } & FGGroupSearchOptions & FGGroupPaginationOptions & FGGroupSortOptions
-): Promise<FGGroupAPIResponse> {
-	return APIGet(FGGroupEndpoints.GetStockManagement, getAPIHeaders('fg_group'), query)
-}
-
-export function CreateProductStock(body: {
-	item_id: string
-	stock: number
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(FGGroupEndpoints.CreateStockManagement, getAPIHeaders('fg_group'), undefined, body)
-}
-
-export function UpdateProductStock(body: {
-	stock_id: string
-	item_id: string
-	stock: number
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(FGGroupEndpoints.UpdateStockManagement, getAPIHeaders('fg_group'), undefined, body)
-}
-
-export function RemoveProductStock(body: { stock_id: string }): Promise<FGGroupAPIResponse> {
-	return APIPost(FGGroupEndpoints.RemoveStockManagement, getAPIHeaders('fg_group'), undefined, body)
 }

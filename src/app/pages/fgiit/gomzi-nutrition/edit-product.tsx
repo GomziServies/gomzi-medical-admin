@@ -16,7 +16,8 @@ const EditMedicalProduct = () => {
 	const [formData, setFormData] = useState({
 		_id: '',
 		name: '',
-		price: '',
+		description: '',
+		unit: '',
 		display_image: '',
 		selectedFile: null as File | null,
 	})
@@ -79,9 +80,8 @@ const EditMedicalProduct = () => {
 			const payload: any = {
 				id: product_id,
 				name: formData.name,
-				price: formData.price,
-				// width: formData.width,
-				// height: formData.height,
+				description: formData.description,
+				unit: formData.unit,
 				display_image: displayImg,
 			}
 			await UpdateProduct(payload)
@@ -145,6 +145,7 @@ const EditMedicalProduct = () => {
 												placeholder='Enter Product ID'
 												type='text'
 												name='_id'
+												disabled
 												onChange={handleInputChange}
 											/>
 										</div>
@@ -162,13 +163,25 @@ const EditMedicalProduct = () => {
 										</div>
 										<div className='col-md-6 fv-row mb-7'>
 											<InputField
-												placeholder='Enter Price'
-												type='number'
+												placeholder='Enter Unit'
+												type='text'
 												className='fv-row'
-												name='price'
-												label='Price'
-												htmlFor='price'
-												value={formData.price}
+												name='unit'
+												label='Unit'
+												htmlFor='unit'
+												value={formData.unit}
+												onChange={handleInputChange}
+											/>
+										</div>
+										<div className='col-md-6 fv-row mb-7'>
+											<InputField
+												placeholder='Enter Description'
+												type='text'
+												className='fv-row'
+												name='description'
+												label='Description'
+												htmlFor='description'
+												value={formData.description}
 												onChange={handleInputChange}
 											/>
 										</div>

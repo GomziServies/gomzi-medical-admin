@@ -30,7 +30,7 @@ const AppRoutes: FC = () => {
 
 	const getDefaultRoute = () => {
 		if (adminType === 'Gomzi_Nutrition' && gomziNutritionToken) return '/nutrition/dashboard'
-		if (adminType === 'FGIIT' && fgiitToken) return '/fgiit/nutrition-product'
+		if (adminType === 'FGIIT' && fgiitToken) return '/fgiit/product'
 		if (gomziNutritionToken) return '/nutrition/dashboard'
 		return '/error/404'
 	}
@@ -109,7 +109,7 @@ const AppRoutes: FC = () => {
 				return (window.location.href = '/nutrition/dashboard')
 			}
 			if (currentUrl == '/nutrition/login' && adminType && admin !== 'Store') {
-				return (window.location.href = '/fgiit/nutrition-product')
+				return (window.location.href = '/fgiit/product')
 			}
 		}
 	}
@@ -132,7 +132,7 @@ const AppRoutes: FC = () => {
 									/>
 									<Route
 										index
-										element={<Navigate to='/fgiit/nutrition-product' />}
+										element={<Navigate to='/fgiit/product' />}
 									/>
 								</>
 							) : null}

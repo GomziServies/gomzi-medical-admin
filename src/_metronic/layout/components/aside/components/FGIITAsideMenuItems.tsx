@@ -7,7 +7,6 @@ import {
 	faUsers,
 } from '@fortawesome/free-solid-svg-icons'
 import { AsideMenuItem } from '../AsideMenuItem'
-import { AsideMenuItemWithSub } from '../AsideMenuItemWithSub'
 
 export function FGIITAsideMenuItems() {
 	return (
@@ -18,8 +17,8 @@ export function FGIITAsideMenuItems() {
 				title='Admin User'
 			/>
 			<AsideMenuItem
-				to='nutrition-product'
-				title='All Products'
+				to='product'
+				title='Products'
 				Icon={faJar}
 			/>
 
@@ -61,33 +60,18 @@ export function FGIITAsideMenuItems() {
 				Icon={faUsers}> */}
 			<AsideMenuItem
 				to='users'
-				title='All Users'
+				title='Users'
 				Icon={faUsers}
 			/>
 			{/* </AsideMenuItemWithSub> */}
 			{/* Users End*/}
 
 			{/* Orders start*/}
-			<AsideMenuItemWithSub
-				to=''
+			<AsideMenuItem
+				to='all-order'
 				title='Orders'
-				Icon={faCartArrowDown}>
-				<AsideMenuItem
-					to='all-order'
-					title='All Orders'
-					hasBullet={true}
-				/>
-				<AsideMenuItem
-					to='fitness-course-order'
-					title='Fitness Course'
-					hasBullet={true}
-				/>
-				<AsideMenuItem
-					to='book-order'
-					title='Book'
-					hasBullet={true}
-				/>
-			</AsideMenuItemWithSub>
+				Icon={faCartArrowDown}
+			/>
 			{/* Orders End*/}
 
 			{/* Cart start*/}
@@ -95,12 +79,12 @@ export function FGIITAsideMenuItems() {
 				to=''
 				title='Cart'
 				Icon={faCartArrowDown}> */}
-				<AsideMenuItem
-					to='/fgiit/cart/add-to-cart'
-					title='User Cart'
-					Icon={faCartShopping}
-				/>
-				{/* <AsideMenuItem
+			<AsideMenuItem
+				to='/fgiit/cart/add-to-cart'
+				title='User Cart'
+				Icon={faCartShopping}
+			/>
+			{/* <AsideMenuItem
 					to='/fgiit/cart/abandoned-list'
 					title='Abandoned Checkout'
 					Icon={faJar}

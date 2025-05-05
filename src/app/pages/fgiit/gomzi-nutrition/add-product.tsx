@@ -9,10 +9,8 @@ const AddMedicalProduct = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [formData, setFormData] = useState({
 		name: '',
-		price: '',
-		note: '',
-		// width: '',
-		// height: '',
+		description: '',
+		unit: '',
 		display_image: '',
 		selectedFile: null as File | null,
 	})
@@ -57,10 +55,8 @@ const AddMedicalProduct = () => {
 
 			const payload: any = {
 				name: formData.name,
-				price: formData.price,
-				note: formData.note,
-				// width: formData.width,
-				// height: formData.height,
+				description: formData.description,
+				unit: formData.unit,
 				display_image: imgUrl,
 			}
 
@@ -70,11 +66,9 @@ const AddMedicalProduct = () => {
 
 			setFormData({
 				name: '',
-				price: '',
-				note: '',
-				// width: '',
-				// height: '',
+				description: '',
 				display_image: '',
+				unit: '',
 				selectedFile: null,
 			})
 			setIsSubmitting(false)
@@ -132,25 +126,25 @@ const AddMedicalProduct = () => {
 												</div>
 												<div className='col-md-6 fv-row mb-7'>
 													<InputField
-														placeholder='Enter Price'
-														type='number'
+														placeholder='Enter Unit'
+														type='text'
 														className='fv-row'
-														name='price'
-														label='Price'
-														htmlFor='price'
-														value={formData.price}
+														name='unit'
+														label='Unit'
+														htmlFor='unit'
+														value={formData.unit}
 														onChange={handleInputChange}
 													/>
 												</div>
 												<div className='col-md-12 fv-row mb-7'>
 													<InputField
-														placeholder='Enter Private Note'
+														placeholder='Enter Description'
 														type='text'
 														className='fv-row'
-														name='note'
-														label='Write Note'
-														htmlFor='Private Note'
-														value={formData.note}
+														name='description'
+														label='Write Description'
+														htmlFor='description'
+														value={formData.description}
 														onChange={handleInputChange}
 													/>
 												</div>

@@ -30,14 +30,3 @@ export function GetBooks(
 ): Promise<FGGroupAPIResponse> {
 	return APIGet(FGGroupEndpoints.GetBooks, getAPIHeaders('fg_group'), query)
 }
-
-export function GetBookFeedbacks(query?: { feedback_id: string }): Promise<FGGroupAPIResponse> {
-	return APIGet(FGGroupEndpoints.GetBooksFeedback, getAPIHeaders('fg_group'), query)
-}
-
-export function UpdateBookFeedback(body: {
-	feedback_id: string
-	status: FeedbackStatusValue
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(FGGroupEndpoints.GetBooksFeedback, getAPIHeaders('fg_group'), undefined, body)
-}

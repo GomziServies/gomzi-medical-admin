@@ -42,19 +42,6 @@ export function SetBookOrderTrackingStatus(body: {
 	return APIPost(FGGroupEndpoints.SetBookTrackingStatus, getAPIHeaders('fg_group'), undefined, body)
 }
 
-export function SetProductOrderTrackingStatus(body: {
-	user_product_id: string
-	status: boolean
-	shipment_status: ShipmentStatusValue
-}): Promise<FGGroupAPIResponse> {
-	return APIPost(
-		FGGroupEndpoints.SetProductTrackingStatus,
-		getAPIHeaders('fg_group'),
-		undefined,
-		body
-	)
-}
-
 // Order Cart
 export function GetOrderCart(query?: {
 	user_id?: string

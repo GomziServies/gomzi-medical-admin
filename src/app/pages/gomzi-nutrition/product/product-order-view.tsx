@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import '../../../../_metronic/assets/css/tracking.css'
 import { PageTitle } from '../../../../_metronic/layout/core'
 import TableButton from '../../../components/TableButton'
-import { GetOrders, SetProductOrderTrackingStatus } from '../../../Functions/FGGroup'
+import { GetOrders } from '../../../Functions/FGGroup'
 import { DayJS } from '../../../../_metronic/helpers/Utils'
 
 const ProductOrderView = () => {
@@ -42,7 +42,7 @@ const ProductOrderView = () => {
 					shipment_status: shipment_status,
 				}
 				try {
-					await SetProductOrderTrackingStatus(payload)
+					// await SetProductOrderTrackingStatus(payload)
 					toast.success('Order Status Update successfully')
 					setActiveStep(step)
 				} catch (error: any) {

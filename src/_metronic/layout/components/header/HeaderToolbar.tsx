@@ -39,7 +39,7 @@ const HeaderToolbar = () => {
 		localStorage.setItem('admin', value)
 
 		if (value === 'FGIIT') {
-			window.location.href = '/fgiit/nutrition-product'
+			window.location.href = '/fgiit/product'
 		} else if (value === 'Gomzi_Nutrition' || value === 'Store') {
 			window.location.href = '/nutrition/dashboard'
 		}
